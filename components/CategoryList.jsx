@@ -7,16 +7,15 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { COLORS } from "../constants/COLORS";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import data from "../assets/data.js";
 
 export default function CategoryList() {
   const { width } = useWindowDimensions();
- 
+
   const navigation = useNavigation();
 
-  
-  const onPressHandler = (category) => navigation.push('Detail', category);
+  const onPressHandler = (category) => navigation.push("Detail", category);
 
   return (
     <View style={styles.container}>
@@ -49,6 +48,7 @@ const styles = StyleSheet.create({
     gap: 30,
     marginTop: 20,
    
+
   },
   title: {
     fontSize: 20,
@@ -59,9 +59,18 @@ const styles = StyleSheet.create({
   },
 
   containerCategory: {
-    backgroundColor: COLORS.white,
+    backgroundColor:"#fff",
     borderRadius: 8,
     overflow: "hidden",
+    shadowColor: COLORS.primary,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 5,
   },
   image: {
     width: "100%",
