@@ -1,17 +1,52 @@
-// 1) Import NavigationContainer et createNativeStackNavigator
+
 import { NavigationContainer } from '@react-navigation/native';
-import { useRootContext } from '../context/RootContext';
-import LaunchNavigation from './LaunchNavigation';
-import MainNavigation from './MainNavigation';
-// 2) Créer un Stack avec la fonction createNativeStackNavigator
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from '../screens/HomeScreen';
+import DetailScreen from '../screens/DetailScreen';
+import OnBoardingScreen from '../screens/OnBoardingScreen';
+import { useEffect, useState } from 'react';
+
+const Stack = createNativeStackNavigator();
 
 export default function RootNavigation() {
-  const { isConnected } = useRootContext();
+    const [alreadyLaunched, setAlreadyLaunched] = useState(false)
 
-  // 4) Pour "chemin" utiliser Stack.Screen à l'intérieur de Stack.Navigator
+    useEffect(() => {
+      (async function () {
+        const data = await AsyncStorage.getItem('alreadyLaunched');
+        if (data) {
+          setAlreadyLaunched(true);
+        }
+      })();
+    }, []);
+
+    console.log(alreadyLaunched);
+
   return (
     <NavigationContainer>
-      {isConnected ? <MainNavigation /> : <LaunchNavigation />}
+      <Stack.Navigator>
+        {alreadyLaunched
+        ? undefined
+        : (
+          <Stack.Screen 
+            name="onBoarding"
+            options= {{ headerShown: false}}
+            component={OnBoardingScreen}
+          />
+        )}
+
+        <Stack.Screen 
+          name="Home"
+          options= {{ headerShown: false}}
+          component={HomeScreen}
+        />
+
+        <Stack.Screen 
+            name="Detail"
+            options= {{ headerShown: false}}
+            component={DetailScreen}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }

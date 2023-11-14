@@ -6,21 +6,17 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import React, { useEffect, useState } from "react";
 import { COLORS } from "../constants/COLORS";
-import { useRootContext } from "../context/RootContext";
 import { useNavigation } from '@react-navigation/native';
 import data from "../assets/data.js";
 
 export default function CategoryList() {
   const { width } = useWindowDimensions();
-  const { onChangeCategoryHandler } = useRootContext();
-  const [categories, setCategories] = useState(undefined);
-  const [active, setActive] = useState(0);
+ 
   const navigation = useNavigation();
 
   
-  const onPressHandler = (products) => navigation.navigate('Detail', products);
+  const onPressHandler = (category) => navigation.push('Detail', category);
 
   return (
     <View style={styles.container}>
@@ -30,7 +26,7 @@ export default function CategoryList() {
           <Pressable
             key={index}
             onPress={() => onPressHandler(item)}
-            style={[styles.containerCategory, { width: width / 2 - 90 }]}
+            style={[styles.containerCategory, { width: width / 2 - 80 }]}
           >
             <Image source={item.image} style={styles.image} />
             <View style={styles.textContainer}>

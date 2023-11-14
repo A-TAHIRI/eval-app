@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from "react";
+
 import {
   FlatList,
   Image,
-  Pressable,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
-import ReadMore from "@fawazahmed/react-native-read-more";
-import { AntDesign } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
 
-import { urlFor } from "../lib/image.sanity";
-import { COLORS } from "../constants/COLORS";
-import CustomButton from "../components/ui/button";
-import { useRootContext } from "../context/RootContext";
-import { arrayRemove, arrayUnion, doc, setDoc } from "firebase/firestore";
-import { db } from "../lib/firebase";
-import Toast from "react-native-toast-message";
+import { AntDesign } from "@expo/vector-icons";
+
 
 
 export default function DetailScreen({ route, navigation }) {
@@ -27,7 +17,7 @@ export default function DetailScreen({ route, navigation }) {
 
   return (
     <SafeAreaView style={styles.areaView}>
-      <Vien style={styles.container}>
+      <View style={styles.container}>
         <FlatList
           data={products}
           extraData={(item, index) => index}
@@ -46,7 +36,7 @@ export default function DetailScreen({ route, navigation }) {
             </View>
           )}
         />
-      </Vien>
+      </View>
     </SafeAreaView>
   );
 }

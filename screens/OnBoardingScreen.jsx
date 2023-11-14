@@ -17,7 +17,7 @@ export default function App() {
   const navigation = useNavigation(); const goNext = async function () {
     try {
       await AsyncStorage.setItem("alreadyLaunched", "true");
-      navigation.push("login");
+      navigation.push("Home");
     } catch (error) {
       console.error(error);
     }
