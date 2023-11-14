@@ -28,16 +28,19 @@ export default function DetailScreen({ route, navigation }) {
           ItemSeparatorComponent={() => <View style={{ marginVertical: 16 }} />}
           s
           renderItem={({ item, index }) => (
-            <View style={styles.containerProduct}>
-              <Image source={item.image} style={styles.image} />
-              <View style={styles.infoProduit}>
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.stock}> 1000 ready stock</Text>
-                <Text style={styles.price}>${item.price}</Text>
+            <View>
+              <View style={styles.containerProduct}>
+                <Image source={item.image} style={styles.image} />
+                <View style={styles.infoProduit}>
+                  <Text style={styles.name}>{item.name}</Text>
+                  <Text style={styles.stock}> 1000 ready stock</Text>
+                  <Text style={styles.price}>${item.price}</Text>
+                </View>
+                <View>
+                  <AntDesign name="hearto" size={24} color="black" />
+                </View>
               </View>
-              <View>
-                <AntDesign name="hearto" size={24} color="black" />
-              </View>
+              <View style={styles.separateur}></View>
             </View>
           )}
         />
@@ -59,15 +62,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.20,
-    shadowRadius: 1.41,
-    
-    elevation: 2,
   },
   image: {
     width: 80,
@@ -95,5 +89,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#000",
+  },
+  separateur: {
+    height: 1,
+    backgroundColor: "#ccc",
+    marginVertical: 16,
   },
 });
