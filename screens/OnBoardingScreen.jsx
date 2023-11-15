@@ -14,14 +14,8 @@ const ImageBackround = require("../assets/images/overview.png");
 
 
 export default function App() {
-  const navigation = useNavigation(); const goNext = async function () {
-    try {
-      await AsyncStorage.setItem("alreadyLaunched", "true");
-      navigation.push("Home");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const navigation = useNavigation();
+ const goNext = ()=> navigation.push('Home')
 
   return (
     <View style={styles.container}>
@@ -61,11 +55,13 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   image: {
-    resizeMode: "cover",
+    resizeMode:"stretch",
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
     height: "100%",
+ 
+    
   },
   startContainer: {
     flex: 0.5,

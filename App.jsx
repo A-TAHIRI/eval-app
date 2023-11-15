@@ -2,10 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import Toast from "react-native-toast-message";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-
-import RootProvider from "./context/RootContext";
-import RootNavigation from "./navigation/RootNavigation";
 import { useCallback } from "react";
+import RootNavigation from "./navigation/RootNavigation";
+
 import { View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
@@ -30,11 +29,11 @@ export default function App() {
 
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <RootProvider>
+      
         <RootNavigation />
         <Toast />
         <StatusBar style="light" />
-      </RootProvider>
+      
     </View>
   );
 }
